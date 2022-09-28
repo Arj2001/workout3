@@ -59,22 +59,38 @@ public class StudentDemo {
         SchoolStudent sch2 = new SchoolStudent(15,95,10);
         SchoolStudent sch3 = new SchoolStudent(5,70,12);
         Student[] arr = {clg1,clg2,sch1,sch2,sch3};
-        for(int i = 0; i < arr.length; i++)
-        arr[i].show();
-        System.out.println("Enter the roll no to be searched:");
-        int rollno = Student.in.nextInt();
+        int counter = 0;
+
         for(int i = 0; i < arr.length; i++){
+            
+            arr[i].show();
+            if(arr[i].percentage > 75){
+                counter++;
+            }
+        }
+        
+        System.out.println("\nStudents having A grade is "+counter);
+
+        System.out.println("\nEnter the roll no to be searched:");
+        int rollno = Student.in.nextInt();
+        int flag = 0;
+        for(int i = 0; i < arr.length; i++){
+
             if( arr[i].rollno == rollno ){
+                flag = 1;
                 if( arr[i] instanceof CollegeStudent){
-                    System.out.println("Rollno "+rollno+ " belongs to COLLEGE");
+                    System.out.println("\nRollno "+rollno+ " belongs to COLLEGE");
                     break;
                 }
                 else{
-                    System.out.println("Rollno "+rollno+ " belongs to SCHOOL");
+                    System.out.println("\nRollno "+rollno+ " belongs to SCHOOL");
                     break;
                 }
             }
         }
-              
+        if(flag == 0){
+            System.out.println("\nRollno not found");
+        }
+        
     }
 }
